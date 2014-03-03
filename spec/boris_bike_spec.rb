@@ -18,10 +18,10 @@ describe Bike do
 	it "should be able to get fixed" do 
 		bike = Bike.new
 		bike.break
-		bike.fixed
+		bike.fix
 		expect(bike).not_to be_broken
 	end
 	
-		
+
 end
 

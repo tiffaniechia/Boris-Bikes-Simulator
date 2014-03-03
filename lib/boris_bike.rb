@@ -16,4 +16,4 @@ class Bike
 	@broken = false
 	end	
 
-ends
+end
