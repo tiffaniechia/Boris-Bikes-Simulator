@@ -2,6 +2,8 @@ require '../lib/boris_bike'
 
 describe Bike do 
 
+	let(:bike) {Bike.new}
+
 	it "should not be broken after we create it" do 
 		bike = Bike.new
 		expect(bike).not_to be_broken
@@ -25,3 +27,14 @@ describe Bike do
 
 end
 
+describe Dockingstation do 
+
+	it "should accept a bike" do
+		bike = Bike.new
+		station = Dockingstation.new
+		expect(station.bike_count).to eq (0)
+		station.dock(bike)
+		expect(station.bike_count).to eq(1)
+	end
+		
+end	
