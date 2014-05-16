@@ -12,15 +12,15 @@ describe BikeContainer do
   end  
 
   it "should accept a bike" do 
-    expect(holder.bike_count).to eq(0)
+    expect(holder.bikes.count).to eq(0)
     holder.dock(bike)
-    expect(holder.bike_count).to eq(1)
+    expect(holder.bikes.count).to eq(1)
   end 
 
   it "should be able to release a bike" do 
     holder.dock(bike)
     holder.release(bike)
-    expect(holder.bike_count).to eq(0)
+    expect(holder.bikes.count).to eq(0)
   end  
 
   it "should know when it is full" do 
@@ -35,7 +35,7 @@ describe BikeContainer do
 
 
   it "should not release a bike if it is empty" do 
-    expect(holder.bike_count).to eq(0)
+    expect(holder.bikes.count).to eq(0)
     expect{holder.release(bike)}.to raise_error(RuntimeError)
   end
 
