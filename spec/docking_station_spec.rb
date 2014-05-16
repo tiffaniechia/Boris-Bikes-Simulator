@@ -39,4 +39,8 @@ describe DockingStation do
     expect(station.available_bikes).to eq([working_bike])
   end  
 
+  it "should allow setting default capacity on initializing" do 
+    expect(station.capacity).to eq(20)
+  end  
+
 end  
