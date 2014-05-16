@@ -12,5 +12,3 @@ This task was set by [Evgeny Shadchnev](https://github.com/shadchnev)
 - Ruby
 - TDD with RSpec
 
-## Moving forward:
-The project is currently unfinished. Will return to it in the near future.
