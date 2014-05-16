@@ -23,6 +23,7 @@ describe Van do
     expect(station.bike_count).to eq(0)
   end  
 
+
   it "should release broken bikes to the garage" do 
     van.collect_broken_bikes(station)
     expect(van.bike_count).to eq(1)
@@ -31,25 +32,26 @@ describe Van do
     expect(stub_garage.bike_count).to eq(1)
   end  
 
-  it "should collect fixed bikes from garage" do 
-    van.collect_broken_bikes(station)
-    van.release_broken_bikes(stub_garage)
-    expect(stub_garage.broken_bikes.count).to eq(1)  
-    @broken_bike.fix
-    expect(stub_garage.broken_bikes.count).to eq(0)
-    expect(van.bike_count).to eq(0)
-    van.collect_fixed_bikes(stub_garage)
-    expect(van.bike_count).to eq(1)  
-    expect(stub_garage.bike_count).to eq(0)
-  end  
+  context "fixed bikes" do
 
-  it "should release fixed bikes to docking station" do 
-    van.collect_broken_bikes(station)
-    van.release_broken_bikes(stub_garage)
-    @broken_bike.fix
-    van.collect_fixed_bikes(stub_garage)
-    van.release_fixed_bikes(station)
-    expect(station.available_bikes.count).to eq(1)
-  end  
+    before do 
+      van.collect_broken_bikes(station)
+      van.release_broken_bikes(stub_garage)
+      @broken_bike.fix
+    end  
+
+    it "should collect fixed bikes from garage" do 
+      van.collect_fixed_bikes(stub_garage)
+      expect(van.bike_count).to eq(1)  
+      expect(stub_garage.bike_count).to eq(0)
+    end  
+
+    it "should release fixed bikes to docking station" do 
+      van.collect_fixed_bikes(stub_garage)
+      van.release_fixed_bikes(station)
+      expect(station.available_bikes.count).to eq(1)
+    end  
+
+end
 
 end  
